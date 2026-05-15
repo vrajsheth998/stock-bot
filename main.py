@@ -10,7 +10,28 @@ from telegram.ext import (
     ContextTypes
 )
 
+# NEW IMPORTS FOR RENDER
+from flask import Flask
+import threading
+import os
+
 BOT_TOKEN = "8804006236:AAH2YXyMZ2ikvBuh4UQuyG9-XitshoiLwXs"
+
+# FLASK SERVER FOR RENDER
+app_web = Flask(__name__)
+
+@app_web.route("/")
+def home():
+    return "Stock Bot Running!"
+
+
+def run_web():
+    port = int(os.environ.get("PORT", 10000))
+
+    app_web.run(
+        host="0.0.0.0",
+        port=port
+    )
 
 # LOAD HOLDINGS
 with open("holdings.json", "r") as file:
@@ -247,7 +268,7 @@ async def portfolio(
     )
 
 
-# BOT SETUP
+# TELEGRAM BOT SETUP
 app = (
     ApplicationBuilder()
     .token(BOT_TOKEN)
@@ -263,4 +284,10 @@ app.add_handler(
 
 print("Bot Running...")
 
+# START FLASK SERVER
+threading.Thread(
+    target=run_web
+).start()
+
+# START TELEGRAM BOT
 app.run_polling()
