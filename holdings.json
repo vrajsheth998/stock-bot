@@ -1,0 +1,39 @@
+[
+  {
+    "symbol": "ACUTAAS.NS",
+    "qty": 72,
+    "buy_price": 495.97
+  },
+  {
+    "symbol": "DECNGOLD.NS",
+    "qty": 300,
+    "buy_price": 100.35
+  },
+  {
+    "symbol": "EPL.NS",
+    "qty": 45,
+    "buy_price": 271.45
+  },
+  {
+    "symbol": "IDEA.NS",
+    "qty": 8100,
+    "buy_price": 7.09
+  },
+ 
+  {
+    "symbol": "NETWORK18.NS",
+    "qty": 150,
+    "buy_price": 74.35
+  },
+  {
+    "symbol": "PAR.NS",
+    "qty": 250,
+    "buy_price": 169.66
+  },
+  
+  {
+    "symbol": "RPOWER.NS",
+    "qty": 600,
+    "buy_price": 23.87
+  }
+]
