@@ -19,7 +19,16 @@
     "qty": 8100,
     "buy_price": 7.09
   },
- 
+  {
+    "symbol": "INDIANACRY.BO",
+    "qty": 1800,
+    "buy_price": 13.17
+  },
+  {
+    "symbol": "MISHTANN.BO",
+    "qty": 9000,
+    "buy_price": 5.28
+  },
   {
     "symbol": "NETWORK18.NS",
     "qty": 150,
@@ -30,7 +39,11 @@
     "qty": 250,
     "buy_price": 169.66
   },
-  
+  {
+    "symbol": "RDBRL.BO",
+    "qty": 300,
+    "buy_price": 102.287
+  },
   {
     "symbol": "RPOWER.NS",
     "qty": 600,
