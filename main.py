@@ -10,7 +10,7 @@ from reportlab.lib.pagesizes import A4
 from reportlab.lib import colors
 from reportlab.lib.units import mm
 from reportlab.platypus import SimpleDocTemplate, Table, TableStyle, Paragraph, Spacer
-from reportlab.lib.styles import getSampleStyleSheet, ParagraphStyle
+from reportlab.lib.styles import ParagraphStyle
 
 BOT_TOKEN = "8804006236:AAH2YXyMZ2ikvBuh4UQuyG9-XitshoiLwXs"
 
@@ -228,7 +228,6 @@ def generate_pdf(vraj_rows, vraj_totals, mom_rows, mom_totals):
         bottomMargin=15*mm
     )
 
-    styles = getSampleStyleSheet()
     BLUE = colors.HexColor("#185FA5")
     LIGHT_BLUE = colors.HexColor("#E6F1FB")
     GREEN = colors.HexColor("#3B6D11")
