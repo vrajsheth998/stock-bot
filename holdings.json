@@ -1,52 +1,86 @@
-[
-  {
-    "symbol": "ACUTAAS.NS",
-    "qty": 72,
-    "buy_price": 495.97
-  },
-  {
-    "symbol": "DECNGOLD.NS",
-    "qty": 300,
-    "buy_price": 100.35
-  },
-  {
-    "symbol": "EPL.NS",
-    "qty": 45,
-    "buy_price": 271.45
-  },
-  {
-    "symbol": "IDEA.NS",
-    "qty": 8100,
-    "buy_price": 7.09
-  },
-  {
-    "symbol": "INDIANACRY.BO",
-    "qty": 1800,
-    "buy_price": 13.17
-  },
-  {
-    "symbol": "MISHTANN.BO",
-    "qty": 9000,
-    "buy_price": 5.28
-  },
-  {
-    "symbol": "NETWORK18.NS",
-    "qty": 150,
-    "buy_price": 74.35
-  },
-  {
-    "symbol": "PAR.NS",
-    "qty": 250,
-    "buy_price": 169.66
-  },
-  {
-    "symbol": "RDBRL.BO",
-    "qty": 300,
-    "buy_price": 102.287
-  },
-  {
-    "symbol": "RPOWER.NS",
-    "qty": 600,
-    "buy_price": 23.87
-  }
-]
+{
+  "vraj": [
+    {
+      "symbol": "ACUTAAS.NS",
+      "qty": 72,
+      "buy_price": 495.97
+    },
+    {
+      "symbol": "DECNGOLD.NS",
+      "qty": 300,
+      "buy_price": 100.35
+    },
+    {
+      "symbol": "EPL.NS",
+      "qty": 45,
+      "buy_price": 271.45
+    },
+    {
+      "symbol": "IDEA.NS",
+      "qty": 8100,
+      "buy_price": 7.09
+    },
+    {
+      "symbol": "INDIANACRY.BO",
+      "qty": 1800,
+      "buy_price": 13.17
+    },
+    {
+      "symbol": "MISHTANN.BO",
+      "qty": 9000,
+      "buy_price": 5.28
+    },
+    {
+      "symbol": "NETWORK18.NS",
+      "qty": 150,
+      "buy_price": 74.35
+    },
+    {
+      "symbol": "PAR.NS",
+      "qty": 250,
+      "buy_price": 169.66
+    },
+    {
+      "symbol": "RDBRL.BO",
+      "qty": 300,
+      "buy_price": 102.287
+    },
+    {
+      "symbol": "RPOWER.NS",
+      "qty": 600,
+      "buy_price": 23.87
+    }
+  ],
+  "mom": [
+    {
+      "symbol": "AKSHOPTFBR.BO",
+      "qty": 1000,
+      "buy_price": 8.98
+    },
+    {
+      "symbol": "GAYAPROJ.BO",
+      "qty": 1500,
+      "buy_price": 6.12
+    },
+    {
+      "symbol": "HCC.NS",
+      "qty": 1000,
+      "buy_price": 27.67
+    },
+    {
+      "symbol": "IDEA.NS",
+      "qty": 5200,
+      "buy_price": 6.33
+    },
+    {
+      "symbol": "RUPAINDUS.NS",
+      "qty": 300,
+      "buy_price": 217.95
+    },
+    {
+      "symbol": "SPANDANA.NS",
+      "qty": 305,
+      "buy_price": 525.50
+    }
+  ]
+}
