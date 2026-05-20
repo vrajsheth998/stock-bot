@@ -24,6 +24,27 @@ with open("holdings.json", "r") as file:
     all_holdings = json.load(file)
 
 
+def fmt(n):
+    n = round(n, 2)
+    s = f"{n:.2f}"
+    integer, decimal = s.split(".")
+    negative = integer.startswith("-")
+    if negative:
+        integer = integer[1:]
+    if len(integer) > 3:
+        last3 = integer[-3:]
+        rest = integer[:-3]
+        groups = []
+        while len(rest) > 2:
+            groups.append(rest[-2:])
+            rest = rest[:-2]
+        if rest:
+            groups.append(rest)
+        integer = last3 if not groups else ",".join(reversed(groups)) + "," + last3
+    result = f"₹{integer}.{decimal}"
+    return f"-{result}" if negative else result
+
+
 def process_portfolio(stocks, name):
 
     total_invested = 0
@@ -89,11 +110,11 @@ def process_portfolio(stocks, name):
 
             stock_message += (
                 f"{overall_icon} {display_symbol} {overall_arrow} {overall_percent}%\n"
-                f"Qty: {qty} | Avg: ₹{buy_price}\n"
-                f"Invested: ₹{invested}\n"
-                f"LTP: ₹{current_price}\n"
+                f"Qty: {qty} | Avg: {fmt(buy_price)}\n"
+                f"Invested: {fmt(invested)}\n"
+                f"LTP: {fmt(current_price)}\n"
                 f"Today: {today_icon} {day_sign}{day_percent}%\n"
-                f"P/L: {pl_sign}₹{overall_pl}\n\n"
+                f"P/L: {pl_sign}{fmt(overall_pl)}\n\n"
                 f"━━━━━━━━━━━━━━\n\n"
             )
 
@@ -109,18 +130,18 @@ def process_portfolio(stocks, name):
 
     header = (
         f"📊 {name} PORTFOLIO\n\n"
-        f"{today_total_icon} Today's P/L: {today_sign}₹{round(today_pl, 2)}\n\n"
+        f"{today_total_icon} Today's P/L: {today_sign}{fmt(today_pl)}\n\n"
         f"━━━━━━━━━━━━━━\n\n"
     )
 
     footer = (
         f"📈 {name} SUMMARY\n\n"
-        f"🚀 Top Gainer: {top_gainer} ({day_sign}{top_gainer_value}%)\n"
-        f"🔴 Top Loser:  {top_loser} ({top_loser_value}%)\n"
-        f"🏆 Best Overall: {best_holding} ({best_holding_value}%)\n\n"
-        f"💰 Invested: ₹{round(total_invested, 2)}\n"
-        f"💎 Current:  ₹{round(total_current, 2)}\n"
-        f"{total_icon} Total P/L: {pl_sign}₹{total_pl} ({pl_sign}{total_percent}%)\n"
+        f"🟢 Top Gainer:    {top_gainer} ({day_sign}{top_gainer_value}%)\n"
+        f"🔴 Top Loser:     {top_loser} ({top_loser_value}%)\n"
+        f"🏆 Best Overall:  {best_holding} ({best_holding_value}%)\n\n"
+        f"💰 Invested: {fmt(total_invested)}\n"
+        f"💎 Current:  {fmt(total_current)}\n"
+        f"{total_icon} Total P/L: {pl_sign}{fmt(total_pl)} ({pl_sign}{total_percent}%)\n"
     )
 
     return header + stock_message + footer
