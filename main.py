@@ -9,7 +9,7 @@ from datetime import datetime
 from reportlab.lib.pagesizes import A4
 from reportlab.lib import colors
 from reportlab.lib.units import mm
-from reportlab.platypus import SimpleDocTemplate, Table, TableStyle, Paragraph, Spacer
+from reportlab.platypus import SimpleDocTemplate, Table, TableStyle, Paragraph, Spacer, PageBreak
 from reportlab.lib.styles import ParagraphStyle
 
 BOT_TOKEN = "8804006236:AAH2YXyMZ2ikvBuh4UQuyG9-XitshoiLwXs"
@@ -71,12 +71,18 @@ def process_portfolio(stocks, name):
             ticker = yf.Ticker(symbol)
             data = ticker.history(period="5d")
 
-            if data.empty or len(data) < 2:
+            if data.empty:
+                print(f"Empty data for {symbol}")
                 continue
 
-            current_price = round(float(data["Close"].iloc[-1]), 2)
-            prev_close = round(float(data["Close"].iloc[-2]), 2)
-            day_percent = round(((current_price - prev_close) / prev_close) * 100, 2)
+            if len(data) < 2:
+                current_price = round(float(data["Close"].iloc[-1]), 2)
+                prev_close = current_price
+            else:
+                current_price = round(float(data["Close"].iloc[-1]), 2)
+                prev_close = round(float(data["Close"].iloc[-2]), 2)
+
+            day_percent = round(((current_price - prev_close) / prev_close) * 100, 2) if prev_close > 0 else 0
             invested = round(qty * buy_price, 2)
             current_value = round(qty * current_price, 2)
             overall_pl = round(current_value - invested, 2)
@@ -159,12 +165,13 @@ def get_stock_data_for_report(stocks):
             ticker = yf.Ticker(symbol)
             data = ticker.history(period="7d")
 
-            if data.empty or len(data) < 2:
+            if data.empty:
+                print(f"Report: empty data for {symbol}")
                 continue
 
             current_price = round(float(data["Close"].iloc[-1]), 2)
             week_open = round(float(data["Close"].iloc[0]), 2)
-            week_percent = round(((current_price - week_open) / week_open) * 100, 2)
+            week_percent = round(((current_price - week_open) / week_open) * 100, 2) if week_open > 0 else 0
             invested = round(qty * buy_price, 2)
             current_value = round(qty * current_price, 2)
             overall_pl = round(current_value - invested, 2)
@@ -224,7 +231,7 @@ def generate_pdf(vraj_rows, vraj_totals, mom_rows, mom_totals):
         pagesize=A4,
         rightMargin=15*mm,
         leftMargin=15*mm,
-        topMargin=15*mm,
+        topMargin=20*mm,
         bottomMargin=15*mm
     )
 
@@ -235,12 +242,30 @@ def generate_pdf(vraj_rows, vraj_totals, mom_rows, mom_totals):
     GRAY = colors.HexColor("#F1EFE8")
     DARK = colors.HexColor("#2C2C2A")
 
-    title_style = ParagraphStyle("title", fontSize=20, textColor=BLUE, spaceAfter=4, fontName="Helvetica-Bold")
-    sub_style = ParagraphStyle("sub", fontSize=11, textColor=colors.HexColor("#5F5E5A"), spaceAfter=4)
-    date_style = ParagraphStyle("date", fontSize=10, textColor=colors.HexColor("#888780"), spaceAfter=16)
-    section_style = ParagraphStyle("section", fontSize=13, textColor=BLUE, spaceBefore=14, spaceAfter=6, fontName="Helvetica-Bold")
-    news_title_style = ParagraphStyle("newstitle", fontSize=11, textColor=BLUE, spaceBefore=10, spaceAfter=4, fontName="Helvetica-Bold")
-    news_item_style = ParagraphStyle("newsitem", fontSize=9, textColor=colors.HexColor("#5F5E5A"), spaceAfter=3, leftIndent=8)
+    title_style = ParagraphStyle(
+        "title", fontSize=22, textColor=BLUE,
+        spaceAfter=6, spaceBefore=0, fontName="Helvetica-Bold"
+    )
+    sub_style = ParagraphStyle(
+        "sub", fontSize=12, textColor=colors.HexColor("#5F5E5A"),
+        spaceAfter=4, spaceBefore=0
+    )
+    date_style = ParagraphStyle(
+        "date", fontSize=10, textColor=colors.HexColor("#888780"),
+        spaceAfter=14, spaceBefore=0
+    )
+    section_style = ParagraphStyle(
+        "section", fontSize=13, textColor=BLUE,
+        spaceBefore=10, spaceAfter=6, fontName="Helvetica-Bold"
+    )
+    news_title_style = ParagraphStyle(
+        "newstitle", fontSize=11, textColor=BLUE,
+        spaceBefore=8, spaceAfter=3, fontName="Helvetica-Bold"
+    )
+    news_item_style = ParagraphStyle(
+        "newsitem", fontSize=9, textColor=colors.HexColor("#5F5E5A"),
+        spaceAfter=3, leftIndent=8
+    )
 
     def make_holdings_table(rows, totals):
         total_invested, total_current, total_pl = totals
@@ -290,8 +315,10 @@ def generate_pdf(vraj_rows, vraj_totals, mom_rows, mom_totals):
     story = []
 
     now = datetime.now()
+
+    # PAGE 1 - COVER
     story.append(Paragraph("Family Portfolio", title_style))
-    story.append(Paragraph("Weekly Report — Vraj & Mom", sub_style))
+    story.append(Paragraph("Weekly Report — Vraj &amp; Mom", sub_style))
     story.append(Paragraph(f"Generated on {now.strftime('%d %B %Y, %I:%M %p')}", date_style))
 
     combined_invested = vraj_totals[0] + mom_totals[0]
@@ -321,17 +348,19 @@ def generate_pdf(vraj_rows, vraj_totals, mom_rows, mom_totals):
         ("FONTNAME", (0, 1), (-1, 1), "Helvetica-Bold"),
     ]))
     story.append(summary_table)
-    story.append(Spacer(1, 10*mm))
 
+    # PAGE 2 - HOLDINGS
+    story.append(PageBreak())
     story.append(Paragraph("Vraj — Holdings", section_style))
     story.append(make_holdings_table(vraj_rows, vraj_totals))
     story.append(Spacer(1, 8*mm))
-
     story.append(Paragraph("Mom — Holdings", section_style))
     story.append(make_holdings_table(mom_rows, mom_totals))
-    story.append(Spacer(1, 8*mm))
 
+    # PAGE 3 - NEWS
+    story.append(PageBreak())
     story.append(Paragraph("Stock News — Last 7 Days", section_style))
+    story.append(Spacer(1, 4*mm))
 
     all_stocks = list(all_holdings["vraj"]) + list(all_holdings["mom"])
     seen = set()
