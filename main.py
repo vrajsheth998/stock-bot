@@ -12,7 +12,7 @@ from reportlab.lib.units import mm
 from reportlab.platypus import SimpleDocTemplate, Table, TableStyle, Paragraph, Spacer, PageBreak
 from reportlab.lib.styles import ParagraphStyle
 
-BOT_TOKEN = "8804006236:AAH2YXyMZ2ikvBuh4UQuyG9-XitshoiLwXs"
+BOT_TOKEN = ""
 
 app_web = Flask(__name__)
 
@@ -291,7 +291,20 @@ def generate_pdf(vraj_rows, vraj_totals, mom_rows, mom_totals):
         total_pct_str = f"+{total_percent}%" if total_percent >= 0 else f"{total_percent}%"
         data.append(["TOTAL", "", "", "", fmt(total_invested), total_pl_str, total_pct_str])
 
-        t = Table(data, colWidths=[45*mm, 18*mm, 25*mm, 25*mm, 30*mm, 30*mm, 18*mm])
+        t = Table(
+           data,
+              colWidths=[
+        35*mm,
+        15*mm,
+        22*mm,
+        22*mm,
+        26*mm,
+        26*mm,
+        16*mm
+             ]
+           )
+
+        t.repeatRows = 1         
         t.setStyle(TableStyle([
             ("BACKGROUND", (0, 0), (-1, 0), LIGHT_BLUE),
             ("TEXTCOLOR", (0, 0), (-1, 0), BLUE),
@@ -380,25 +393,39 @@ def generate_pdf(vraj_rows, vraj_totals, mom_rows, mom_totals):
     return filepath
 
 
-async def report(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    await update.message.reply_text("Generating your weekly report PDF... please wait ⏳")
+async def portfolio(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
-    try:
-        vraj_rows, vi, vc, vp = get_stock_data_for_report(all_holdings["vraj"])
-        mom_rows, mi, mc, mp = get_stock_data_for_report(all_holdings["mom"])
+    vraj_message = process_portfolio(
+        all_holdings["vraj"],
+        "VRAJ"
+    )
 
-        filepath = generate_pdf(vraj_rows, (vi, vc, vp), mom_rows, (mi, mc, mp))
+    mom_message = process_portfolio(
+        all_holdings["mom"],
+        "MOM"
+    )
 
-        with open(filepath, "rb") as f:
-            await update.message.reply_document(
-                document=f,
-                filename="Family_Portfolio_Report.pdf",
-                caption="Your weekly portfolio report"
-            )
+    separator = "\n\n━━━━━━━━━━━━━━━━━━━━\n\n"
 
-    except Exception as e:
-        print(f"Report generation error: {e}")
-        await update.message.reply_text(f"Sorry, error generating report: {e}")
+    final_message = (
+        vraj_message +
+        separator +
+        mom_message
+    )
+
+    MAX_MESSAGE_LENGTH = 4000
+
+    for i in range(
+        0,
+        len(final_message),
+        MAX_MESSAGE_LENGTH
+    ):
+
+        await update.message.reply_text(
+            final_message[
+                i:i + MAX_MESSAGE_LENGTH
+            ]
+        )
 
 
 async def portfolio(update: Update, context: ContextTypes.DEFAULT_TYPE):
