@@ -12,7 +12,7 @@ from reportlab.lib.units import mm
 from reportlab.platypus import SimpleDocTemplate, Table, TableStyle, Paragraph, Spacer, PageBreak
 from reportlab.lib.styles import ParagraphStyle
 
-BOT_TOKEN = "8804006236:AAH2YXyMZ2ikvBuh4UQuyG9-XitshoiLwXs"
+BOT_TOKEN = ""
 
 app_web = Flask(__name__)
 
@@ -393,7 +393,50 @@ def generate_pdf(vraj_rows, vraj_totals, mom_rows, mom_totals):
     return filepath
 
 
-async def portfolio(update: Update, context: ContextTypes.DEFAULT_TYPE):
+async def report(update: Update, context: ContextTypes.DEFAULT_TYPE):
+
+    await update.message.reply_text(
+        "Generating your weekly report PDF... please wait ⏳"
+    )
+
+    try:
+
+        vraj_rows, vi, vc, vp = get_stock_data_for_report(
+            all_holdings["vraj"]
+        )
+
+        mom_rows, mi, mc, mp = get_stock_data_for_report(
+            all_holdings["mom"]
+        )
+
+        filepath = generate_pdf(
+            vraj_rows,
+            (vi, vc, vp),
+            mom_rows,
+            (mi, mc, mp)
+        )
+
+        with open(filepath, "rb") as f:
+
+            await update.message.reply_document(
+                document=f,
+                filename="Family_Portfolio_Report.pdf",
+                caption="Your weekly portfolio report"
+            )
+
+    except Exception as e:
+
+        print(f"Report generation error: {e}")
+
+        await update.message.reply_text(
+            f"Sorry, error generating report: {e}"
+        )
+
+
+async def portfolio(
+    update: Update,
+    context: ContextTypes.DEFAULT_TYPE
+):
 
     vraj_message = process_portfolio(
         all_holdings["vraj"],
@@ -428,19 +471,31 @@ async def portfolio(update: Update, context: ContextTypes.DEFAULT_TYPE):
         )
 
 
-async def portfolio(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    vraj_message = process_portfolio(all_holdings["vraj"], "VRAJ")
-    mom_message = process_portfolio(all_holdings["mom"], "MOM")
-    separator = "\n\n━━━━━━━━━━━━━━━━━━━━\n\n"
-    final_message = vraj_message + separator + mom_message
-    await update.message.reply_text(final_message)
+app = (
+    ApplicationBuilder()
+    .token(BOT_TOKEN)
+    .build()
+)
 
+app.add_handler(
+    CommandHandler(
+        "portfolio",
+        portfolio
+    )
+)
 
-app = ApplicationBuilder().token(BOT_TOKEN).build()
-app.add_handler(CommandHandler("portfolio", portfolio))
-app.add_handler(CommandHandler("report", report))
+app.add_handler(
+    CommandHandler(
+        "report",
+        report
+    )
+)
 
 print("Bot Running...")
 
-threading.Thread(target=run_web, daemon=True).start()
+threading.Thread(
+    target=run_web,
+    daemon=True
+).start()
+
 app.run_polling()
