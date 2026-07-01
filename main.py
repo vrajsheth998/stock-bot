@@ -469,7 +469,9 @@ async def portfolio(
                 i:i + MAX_MESSAGE_LENGTH
             ]
         )
-
+async def watchlist(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    message = process_portfolio(all_holdings["watchlist"], "WATCHLIST")
+    await update.message.reply_text(message)
 
 app = (
     ApplicationBuilder()
@@ -490,6 +492,7 @@ app.add_handler(
         report
     )
 )
+app.add_handler(CommandHandler("watchlist", watchlist))
 
 print("Bot Running...")
 

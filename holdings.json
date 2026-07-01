@@ -82,6 +82,33 @@
       "qty": 305,
       "buy_price": 525.50
     }
+  ],
+"watchlist": [
+    { "symbol": "CEATLTD.NS", "qty": 10, "buy_price": 3450 },
+    { "symbol": "BELRISE.NS", "qty": 10, "buy_price": 237 },
+    { "symbol": "SEDEMAC.NS", "qty": 10, "buy_price": 2768 },
+    { "symbol": "SUNTECK.NS", "qty": 10, "buy_price": 315 },
+    { "symbol": "SYMPHONY.NS", "qty": 10, "buy_price": 689 },
+    { "symbol": "BEL.NS", "qty": 10, "buy_price": 424 },
+    { "symbol": "SHILPAMED.NS", "qty": 10, "buy_price": 579 },
+    { "symbol": "M&M.NS", "qty": 10, "buy_price": 3136 },
+    { "symbol": "IRFC.NS", "qty": 10, "buy_price": 100 },
+    { "symbol": "RECLTD.NS", "qty": 10, "buy_price": 363 },
+    { "symbol": "PNB.NS", "qty": 10, "buy_price": 109 },
+    { "symbol": "IDBI.NS", "qty": 10, "buy_price": 86 },
+    { "symbol": "SBIN.NS", "qty": 10, "buy_price": 1030 },
+    { "symbol": "SUZLON.NS", "qty": 10, "buy_price": 59 },
+    { "symbol": "TRANSRAILL.NS", "qty": 10, "buy_price": 505 },
+    { "symbol": "JIOFIN.NS", "qty": 10, "buy_price": 244 },
+    { "symbol": "BBL.NS", "qty": 10, "buy_price": 2891 },
+    { "symbol": "ACE.NS", "qty": 10, "buy_price": 1000 },
+    { "symbol": "APOLLOHOSP.NS", "qty": 10, "buy_price": 8450 },
+    { "symbol": "GNA.NS", "qty": 10, "buy_price": 439 },
+    { "symbol": "HITECHGEAR.NS", "qty": 10, "buy_price": 662 },
+    { "symbol": "JYOTICNC.NS", "qty": 10, "buy_price": 772 },
+    { "symbol": "HBLPOWER.NS", "qty": 10, "buy_price": 807 },
+    { "symbol": "ASTERDM.NS", "qty": 10, "buy_price": 783 },
+    { "symbol": "INDIGO.NS", "qty": 10, "buy_price": 5385 },
+    { "symbol": "COCHINSHIP.NS", "qty": 10, "buy_price": 1480 }
   ]
 }
-
