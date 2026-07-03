@@ -112,7 +112,7 @@ def process_portfolio(stocks, name):
             day_sign = "+" if day_percent >= 0 else ""
 
             stock_message += (
-                f"{overall_icon} {display_symbol} {overall_arrow} {overall_percent}%\n"
+                f"{overall_icon}{display_symbol} {overall_arrow} {overall_percent}%\n"
                 f"Qty: {qty} | Avg: {fmt(buy_price)}\n"
                 f"Invested: {fmt(invested)}\n"
                 f"LTP: {fmt(current_price)}\n"
@@ -156,7 +156,7 @@ def get_stock_data_for_report(stocks):
     total_current = 0
     total_pl = 0
 
-    for stock in stocks:
+    for idx, stock in enumerate(stocks, start=1):
         symbol = stock["symbol"]
         qty = stock["qty"]
         buy_price = stock["buy_price"]
@@ -470,8 +470,14 @@ async def portfolio(
             ]
         )
 async def watchlist(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    message = process_portfolio(all_holdings["watchlist"], "WATCHLIST")
-    await update.message.reply_text(message)
+    stocks = all_holdings["watchlist"]
+    mid = len(stocks) // 2
+    
+    msg1 = process_portfolio(stocks[:mid], "WATCHLIST 1/2")
+    msg2 = process_portfolio(stocks[mid:], "WATCHLIST 2/2")
+    
+    await update.message.reply_text(msg1)
+    await update.message.reply_text(msg2)
 
 app = (
     ApplicationBuilder()

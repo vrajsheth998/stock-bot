@@ -120,5 +120,25 @@
     { "symbol": "ASTERDM.NS", "qty": 10, "buy_price": 783 },
     { "symbol": "INDIGO.NS", "qty": 10, "buy_price": 5385 },
     { "symbol": "COCHINSHIP.NS", "qty": 10, "buy_price": 1480 }
+    { "symbol": "SUNPHARMA.NS", "qty": 10, "buy_price": 1873 },
+    { "symbol": "CDSL.NS", "qty": 10, "buy_price": 1207 },
+    { "symbol": "MIDHANI.NS", "qty": 10, "buy_price": 421 },
+    { "symbol": "APOLLOMICRO.NS", "qty": 10, "buy_price": 425 },
+    { "symbol": "IFCI.NS", "qty": 10, "buy_price": 68 },
+    { "symbol": "ADANIENERGYSOL.NS", "qty": 10, "buy_price": 1418 },
+    { "symbol": "ATGL.NS", "qty": 10, "buy_price": 834 },
+    { "symbol": "CANBK.NS", "qty": 10, "buy_price": 133 },
+    { "symbol": "NSDL.NS", "qty": 10, "buy_price": 822 },
+    { "symbol": "RML.NS", "qty": 10, "buy_price": 924 },
+    { "symbol": "ACMESOLAR.NS", "qty": 10, "buy_price": 330 },
+    { "symbol": "RAIN.NS", "qty": 10, "buy_price": 201 },
+    { "symbol": "BFUTILITIE.NS", "qty": 10, "buy_price": 605 },
+    { "symbol": "ESCORTS.NS", "qty": 10, "buy_price": 2777 },
+    { "symbol": "SHYAMMETL.NS", "qty": 10, "buy_price": 1004 },
+    { "symbol": "DIAMONDYD.NS", "qty": 10, "buy_price": 203 },
+    { "symbol": "MSTC.NS", "qty": 10, "buy_price": 525 },
+    { "symbol": "JINDALPOLY.NS", "qty": 10, "buy_price": 662 },
+    { "symbol": "GLAND.NS", "qty": 10, "buy_price": 2333 },
+    { "symbol": "NBCC.NS", "qty": 10, "buy_price": 104 }
   ]
 }
