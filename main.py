@@ -156,7 +156,7 @@ def get_stock_data_for_report(stocks):
     total_current = 0
     total_pl = 0
 
-    for idx, stock in enumerate(stocks, start=1):
+    for stock in stocks:
         symbol = stock["symbol"]
         qty = stock["qty"]
         buy_price = stock["buy_price"]
