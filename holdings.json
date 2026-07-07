@@ -120,6 +120,7 @@
     { "symbol": "ASTERDM.NS", "qty": 10, "buy_price": 783 },
     { "symbol": "INDIGO.NS", "qty": 10, "buy_price": 5385 },
     { "symbol": "COCHINSHIP.NS", "qty": 10, "buy_price": 1480 },
+    
     { "symbol": "SUNPHARMA.NS", "qty": 10, "buy_price": 1873 },
     { "symbol": "CDSL.NS", "qty": 10, "buy_price": 1207 },
     { "symbol": "MIDHANI.NS", "qty": 10, "buy_price": 421 },
@@ -140,5 +141,18 @@
     { "symbol": "JINDALPOLY.NS", "qty": 10, "buy_price": 662 },
     { "symbol": "GLAND.NS", "qty": 10, "buy_price": 2333 },
     { "symbol": "NBCC.NS", "qty": 10, "buy_price": 104 }
+  ],
+  "meenakshi": [
+    { "symbol": "ARE&M.NS", "qty": 10, "buy_price": 1199.24 },
+    { "symbol": "AWL.NS", "qty": 70, "buy_price": 555.61 },
+    { "symbol": "BANDHANBNK.NS", "qty": 150, "buy_price": 285.20 },
+    { "symbol": "CENTRALBK.NS", "qty": 300, "buy_price": 57.41 },
+    { "symbol": "EQUITASBNK.NS", "qty": 500, "buy_price": 81.29 },
+    { "symbol": "KAYA.NS", "qty": 300, "buy_price": 426.30 },
+    { "symbol": "MANAKSTEEL.NS", "qty": 400, "buy_price": 94.84 },
+    { "symbol": "SPANDANA.NS", "qty": 225, "buy_price": 525.38 },
+    { "symbol": "STARPAPER.NS", "qty": 200, "buy_price": 121.83 },
+    { "symbol": "SUBEXLTD.NS", "qty": 2300, "buy_price": 23.53 },
+    { "symbol": "ZEEL.NS", "qty": 110, "buy_price": 144.36 }
   ]
 }
