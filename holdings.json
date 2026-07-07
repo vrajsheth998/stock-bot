@@ -162,7 +162,7 @@
     { "symbol": "CPPLUS.NS", "qty": 10, "buy_price": 3610 },
     { "symbol": "CLEANMAX.NS", "qty": 10, "buy_price": 1485 },
     { "symbol": "SUZLON.NS", "qty": 1000, "buy_price": 40 },
-    { "symbol": "BBL.NS", "qty": 2900, "buy_price": 30 },
+    { "symbol": "BBL.NS", "qty": 30, "buy_price": 2900 },
     { "symbol": "TRANSRAILL.NS", "qty": 200, "buy_price": 515 },
     { "symbol": "COCHINSHIP.NS", "qty": 100, "buy_price": 1490 }
   ]
