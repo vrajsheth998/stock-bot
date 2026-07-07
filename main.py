@@ -482,6 +482,9 @@ async def watchlist(update: Update, context: ContextTypes.DEFAULT_TYPE):
 async def meenakshi(update: Update, context: ContextTypes.DEFAULT_TYPE):
     message = process_portfolio(all_holdings["meenakshi"], "MEENAKSHI")
     await update.message.reply_text(message)
+async def ashok(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    message = process_portfolio(all_holdings["ashok"], "ASHOK")
+    await update.message.reply_text(message)
 
 app = (
     ApplicationBuilder()
@@ -504,6 +507,7 @@ app.add_handler(
 )
 app.add_handler(CommandHandler("watchlist", watchlist))
 app.add_handler(CommandHandler("meenakshi", meenakshi))
+app.add_handler(CommandHandler("ashok", ashok))
 
 print("Bot Running...")
 
