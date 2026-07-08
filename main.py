@@ -470,14 +470,12 @@ async def portfolio(
             ]
         )
 async def watchlist(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    stocks = all_holdings["watchlist"]
-    mid = len(stocks) // 2
-    
-    msg1 = process_portfolio(stocks[:mid], "WATCHLIST 1/2")
-    msg2 = process_portfolio(stocks[mid:], "WATCHLIST 2/2")
-    
-    await update.message.reply_text(msg1)
-    await update.message.reply_text(msg2)
+    message = process_portfolio(all_holdings["watchlist"][:26], "WATCHLIST")
+    await update.message.reply_text(message)
+
+async def watchlist2(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    message = process_portfolio(all_holdings["watchlist"][26:], "WATCHLIST 2")
+    await update.message.reply_text(message)
 
 async def meenakshi(update: Update, context: ContextTypes.DEFAULT_TYPE):
     message = process_portfolio(all_holdings["meenakshi"], "MEENAKSHI")
@@ -506,6 +504,7 @@ app.add_handler(
     )
 )
 app.add_handler(CommandHandler("watchlist", watchlist))
+app.add_handler(CommandHandler("watchlist2", watchlist2))
 app.add_handler(CommandHandler("meenakshi", meenakshi))
 app.add_handler(CommandHandler("ashok", ashok))
 
