@@ -12,7 +12,8 @@ from reportlab.lib.units import mm
 from reportlab.platypus import SimpleDocTemplate, Table, TableStyle, Paragraph, Spacer, PageBreak
 from reportlab.lib.styles import ParagraphStyle
 
-BOT_TOKEN = os.environ.get("BOT_TOKEN")
+
+BOT_TOKEN = "8804006236:AAH2YXyMZ2ikvBuh4UQuyG9-XitshoiLwXs"
 
 app_web = Flask(__name__)
 
