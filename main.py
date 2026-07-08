@@ -471,11 +471,11 @@ async def portfolio(
             ]
         )
 async def watchlist(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    message = process_portfolio(all_holdings["watchlist"][:26], "WATCHLIST")
+    message = process_portfolio(all_holdings["watchlist"], "WATCHLIST")
     await update.message.reply_text(message)
 
 async def watchlist2(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    message = process_portfolio(all_holdings["watchlist2"][26:], "WATCHLIST 2")
+    message = process_portfolio(all_holdings["watchlist2"], "WATCHLIST 2")
     await update.message.reply_text(message)
 
 async def meenakshi(update: Update, context: ContextTypes.DEFAULT_TYPE):
