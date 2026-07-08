@@ -12,7 +12,7 @@ from reportlab.lib.units import mm
 from reportlab.platypus import SimpleDocTemplate, Table, TableStyle, Paragraph, Spacer, PageBreak
 from reportlab.lib.styles import ParagraphStyle
 
-BOT_TOKEN = "8804006236:AAH2YXyMZ2ikvBuh4UQuyG9-XitshoiLwXs"
+BOT_TOKEN = os.environ.get("BOT_TOKEN")
 
 app_web = Flask(__name__)
 
@@ -62,7 +62,7 @@ def process_portfolio(stocks, name):
     best_holding = ""
     best_holding_value = -999
 
-    for stock in stocks:
+    for idx, stock in enumerate(stocks, start=1):
         symbol = stock["symbol"]
         qty = stock["qty"]
         buy_price = stock["buy_price"]
@@ -112,7 +112,7 @@ def process_portfolio(stocks, name):
             day_sign = "+" if day_percent >= 0 else ""
 
             stock_message += (
-                f"{overall_icon}{display_symbol} {overall_arrow} {overall_percent}%\n"
+                f"{overall_icon} {idx}. {display_symbol} {overall_arrow} {overall_percent}%\n"
                 f"Qty: {qty} | Avg: {fmt(buy_price)}\n"
                 f"Invested: {fmt(invested)}\n"
                 f"LTP: {fmt(current_price)}\n"
@@ -474,7 +474,7 @@ async def watchlist(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await update.message.reply_text(message)
 
 async def watchlist2(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    message = process_portfolio(all_holdings["watchlist"][26:], "WATCHLIST 2")
+    message = process_portfolio(all_holdings["watchlist2"][26:], "WATCHLIST 2")
     await update.message.reply_text(message)
 
 async def meenakshi(update: Update, context: ContextTypes.DEFAULT_TYPE):
