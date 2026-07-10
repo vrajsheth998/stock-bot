@@ -162,9 +162,11 @@
     { "symbol": "ASMTEC.BO", "qty": 10, "buy_price": 4010 },
     { "symbol": "CPPLUS.NS", "qty": 10, "buy_price": 3610 },
     { "symbol": "CLEANMAX.NS", "qty": 10, "buy_price": 1485 },
-    { "symbol": "SUZLON.NS", "qty": 1000, "buy_price": 40 },
+    { "symbol": "SUZLON.NS", "qty": 1000, "buy_price": 59.40 },
     { "symbol": "BBL.NS", "qty": 30, "buy_price": 2900 },
     { "symbol": "TRANSRAILL.NS", "qty": 200, "buy_price": 515 },
-    { "symbol": "COCHINSHIP.NS", "qty": 100, "buy_price": 1490 }
+    { "symbol": "COCHINSHIP.NS", "qty": 100, "buy_price": 1490 },
+    { "symbol": "MAPMYINDIA.NS", "qty": 25, "buy_price": 1051 },
+    { "symbol": "APOLLOMICRO.NS", "qty": 150, "buy_price": 395.30 }
   ]
 }
