@@ -125,7 +125,7 @@
     { "symbol": "SUNPHARMA.NS", "qty": 10, "buy_price": 1873 },
     { "symbol": "CDSL.NS", "qty": 10, "buy_price": 1207 },
     { "symbol": "MIDHANI.NS", "qty": 10, "buy_price": 421 },
-    { "symbol": "APOLLOMICRO.NS", "qty": 10, "buy_price": 425 },
+    { "symbol": "APOLLO.NS", "qty": 10, "buy_price": 425 },
     { "symbol": "IFCI.NS", "qty": 10, "buy_price": 68 },
     { "symbol": "ADANIENERGYSOL.NS", "qty": 10, "buy_price": 1418 },
     { "symbol": "ATGL.NS", "qty": 10, "buy_price": 834 },
@@ -167,6 +167,6 @@
     { "symbol": "TRANSRAILL.NS", "qty": 200, "buy_price": 515 },
     { "symbol": "COCHINSHIP.NS", "qty": 100, "buy_price": 1490 },
     { "symbol": "MAPMYINDIA.NS", "qty": 25, "buy_price": 1051 },
-    { "symbol": "APOLLOMICRO.NS", "qty": 150, "buy_price": 395.30 }
+    { "symbol": "APOLLO.NS", "qty": 150, "buy_price": 395.30 }
   ]
 }
