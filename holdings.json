@@ -168,5 +168,14 @@
     { "symbol": "COCHINSHIP.NS", "qty": 100, "buy_price": 1490 },
     { "symbol": "MAPMYINDIA.NS", "qty": 25, "buy_price": 1051 },
     { "symbol": "APOLLO.NS", "qty": 150, "buy_price": 395.30 }
+  ],
+  "rohit": [
+    { "symbol": "SATIN.NS", "qty": 50, "buy_price": 270 },
+    { "symbol": "SUVEN.NS", "qty": 100, "buy_price": 369 },
+    { "symbol": "CPPLUS.NS", "qty": 15, "buy_price": 3700 },
+    { "symbol": "ELLEN.NS", "qty": 100, "buy_price": 299 },
+    { "symbol": "SHYAMMETL.NS", "qty": 50, "buy_price": 1013 },
+    { "symbol": "SEDEMAC.NS", "qty": 10, "buy_price": 2729 },
+    { "symbol": "SUDARSCHEM.NS", "qty": 30, "buy_price": 1069 }
   ]
 }
