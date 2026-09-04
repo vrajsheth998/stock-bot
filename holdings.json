@@ -177,5 +177,23 @@
     { "symbol": "SHYAMMETL.NS", "qty": 50, "buy_price": 1013 },
     { "symbol": "SEDEMAC.NS", "qty": 10, "buy_price": 2729 },
     { "symbol": "SUDARSCHEM.NS", "qty": 30, "buy_price": 1069 }
+  ],
+  "mandev": [
+    { "symbol": "LGEINDIA.NS", "qty": 100, "buy_price": 1643.80 },
+    { "symbol": "JAYNECOIND.NS", "qty": 1000, "buy_price": 102.70 },
+    { "symbol": "GESHIP.NS", "qty": 50, "buy_price": 1357.00 },
+    { "symbol": "SHYAMMETL.NS", "qty": 90, "buy_price": 1012.00 },
+    { "symbol": "ZYDUSLIFE.NS", "qty": 90, "buy_price": 1111.00 },
+    { "symbol": "RIIL.NS", "qty": 50, "buy_price": 762.00 },
+    { "symbol": "TATVA.NS", "qty": 250, "buy_price": 1583.50 },
+    { "symbol": "TATACAP.NS", "qty": 250, "buy_price": 370.25 },
+    { "symbol": "SEDEMAC.NS", "qty": 60, "buy_price": 3054.80 },
+    { "symbol": "VERANDA.NS", "qty": 300, "buy_price": 249.25 },
+    { "symbol": "JAIBALAJI.NS", "qty": 850, "buy_price": 71.93 },
+    { "symbol": "NEWGEN.NS", "qty": 300, "buy_price": 532.55 },
+    { "symbol": "TALBROAUTO.NS", "qty": 500, "buy_price": 415.00 },
+    { "symbol": "SUDARSCHEM.NS", "qty": 250, "buy_price": 1259.84 },
+    { "symbol": "MOSCHIP.NS", "qty": 200, "buy_price": 219.00 }
+  
   ]
 }

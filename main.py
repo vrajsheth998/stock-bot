@@ -487,6 +487,9 @@ async def ashok(update: Update, context: ContextTypes.DEFAULT_TYPE):
 async def rohit(update: Update, context: ContextTypes.DEFAULT_TYPE):
     message = process_portfolio(all_holdings["rohit"], "ROHIT")
     await update.message.reply_text(message)
+async def mandev(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    message = process_portfolio(all_holdings["mandev"], "MANDEV")
+    await update.message.reply_text(message)
 
 app = (
     ApplicationBuilder()
@@ -512,6 +515,7 @@ app.add_handler(CommandHandler("watchlist2", watchlist2))
 app.add_handler(CommandHandler("meenakshi", meenakshi))
 app.add_handler(CommandHandler("ashok", ashok))
 app.add_handler(CommandHandler("rohit", rohit))
+app.add_handler(CommandHandler("mandev", mandev))
 
 print("Bot Running...")
 
